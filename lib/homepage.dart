@@ -14,7 +14,7 @@
 //   @override
 //   Widget build(BuildContext context) {
 //     return const Scaffold(
-      
+
 //     );
 //   }
 // }
@@ -57,59 +57,122 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    String resultText = result == 0.0 ? 'Result: ' : ' ';
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Calculator'),
+        title: Text(''),
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 20.0, top: 50.0, right: 20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            TextField(
-              controller: num1Controller,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: 'Enter number 1',
-              ),
-            ),
-            TextField(
-              controller: num2Controller,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: 'Enter number 2',
-              ),
-            ),
-            SizedBox(height: 16.0),
+            // Grouping the TextFields together
             Column(
-              
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                ElevatedButton(
-                  onPressed: () => calculateResult('+'),
-                  child: Text('Additon'),
+                TextField(
+                  controller: num1Controller,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    labelText: 'Enter number 1',
+                  ),
                 ),
-                ElevatedButton(
-                  onPressed: () => calculateResult('-'),
-                  child: Text('Subtraction'),
-                ),
-                ElevatedButton(
-                  onPressed: () => calculateResult('*'),
-                  child: Text('Multiplication'),
-                ),
-                ElevatedButton(
-                  onPressed: () => calculateResult('/'),
-                  child: Text('Division'),
+                SizedBox(height: 16.0),
+                TextField(
+                  controller: num2Controller,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    labelText: 'Enter number 2',
+                  ),
                 ),
               ],
             ),
             SizedBox(height: 16.0),
-            Text(
-              'Result: $result',
+            // Grouping the ElevatedButtons with padding at the top
+            Padding(
+              padding: const EdgeInsets.only(top: 100.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  ElevatedButton(
+                    onPressed: () => calculateResult('+'),
+                    style: ElevatedButton.styleFrom(
+                      // foregroundColor: const Color.fromARGB(0, 217, 217, 217),
+                      backgroundColor:
+                          const Color.fromARGB(0, 217, 217, 217),
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(0.0), // square shape
+                      ),
+                    ),
+                    child: Text(
+                      'Addition',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 0, 0, 0)), // text style
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () => calculateResult('-'),
+                    style: ElevatedButton.styleFrom(
+                      // foregroundColor: const Color.fromARGB(0, 217, 217, 217),
+                      backgroundColor:
+                          const Color.fromARGB(0, 217, 217, 217),// foreground color (text color)
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(0.0), // square shape
+                      ),
+                    ),
+                    child: Text(
+                      'Subtraction',
+                      style: TextStyle(color: Colors.black), // text style
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () => calculateResult('*'),
+                    style: ElevatedButton.styleFrom(
+                      // foregroundColor: const Color.fromARGB(0, 217, 217, 217),
+                      backgroundColor:
+                          const Color.fromARGB(0, 217, 217, 217),
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(0.0), // square shape
+                      ),
+                    ),
+                    child: Text(
+                      'Multiplication',
+                      style: TextStyle(color: Colors.black), // text style
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () => calculateResult('/'),
+                    style: ElevatedButton.styleFrom(
+                      // foregroundColor: const Color.fromARGB(0, 217, 217, 217),
+                      backgroundColor:
+                         const Color.fromARGB(0, 217, 217, 217),
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(0.0), // square shape
+                      ),
+                    ),
+                    child: Text(
+                      'Division',
+                      style: TextStyle(color: Colors.black), // text style
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 16.0),
+          Padding(
+            padding: const EdgeInsets.only(top: 100.0),
+            child: Text(
+              '$resultText$result',
               style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
+          ),
           ],
         ),
       ),
